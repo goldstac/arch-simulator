@@ -1,14 +1,26 @@
-# Arch Installer Simulation
+# Arch Linux Simulator
 
-A minimalist terminal-based Arch Linux installation simulator. Provides a mock shell environment to practice basic Arch-like commands in a simulated, read-only session.
+A terminal-based Arch Linux installation and environment simulator. Boots into a fake GRUB menu, prompts for login credentials, and provides a mock shell for practicing Arch-like commands.
 
-## Usage
+## Getting Started
 
 ```bash
 python3 src/core/main.py
 ```
 
-No external dependencies required — pure Python 3 standard library.
+No external dependencies — pure Python 3 standard library.
+
+### Boot Sequence
+
+1. **GRUB Bootloader** — Select `1: Arch Linux` to boot
+2. **Login** — Authenticate with the mock credentials
+
+### Login Credentials
+
+| Field | Value |
+|---|---|
+| Username | `admin` |
+| Password | `iusearchbtw` |
 
 ## Commands
 
@@ -16,9 +28,21 @@ No external dependencies required — pure Python 3 standard library.
 |---|---|
 | `exit` | Exit the simulator |
 | `clear` | Clear the terminal |
-| `whoami` | Display the simulated username |
+| `whoami` | Display the current user |
 | `sudo pacman -Syu` | Simulate an Arch system update |
-| `run-app` | Launch an external application |
+| `run-app` | Launch an external application via the system shell |
+
+## Project Structure
+
+```
+src/
+└── core/
+    ├── main.py                  # Entry point and REPL loop
+    ├── application_run.py       # External app launcher
+    ├── bootloader/grub/grub.py  # GRUB boot simulation
+    ├── login/login.py           # Login prompt simulation
+    └── files/username.txt       # Username data file
+```
 
 ## License
 

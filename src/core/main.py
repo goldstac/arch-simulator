@@ -1,9 +1,12 @@
+from login.login import login
+from bootloader.grub.grub import bootloader
 from application_run import run_application
 import os
 import time
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-
+bootloader()
+login()
 while True:
  main_terminal_shell = input("admin@arch ~ # ")
  if main_terminal_shell == "exit":
